@@ -1,0 +1,36 @@
+###
+POST http://localhost:8080/api/cards/create
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "ownerName": "Alice",
+  "pan": "4111 1111 1111 1111"
+}
+
+###
+GET http://localhost:8080/api/cards/get/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+###
+GET http://localhost:8080/api/cards/getAll
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+POST http://localhost:8080/api/users/generate
+
+###
+GET http://localhost:8080/api/users/getRecords?limit=200
+
+> {% client.global.set("cursor", response.body.nextCursor)%}
+
+###
+GET http://localhost:8080/api/users/getRecords?cursor={{cursor}}&limit=50
+
+> {% client.global.set("cursor", response.body.nextCursor)%}
+
+###
+GET http://localhost:8080/api/users/getRecords?cursor=eyJsYXN0Q3JlYXRlZEF0RXBvY2hNaWxsaSI6MTc1NTU4MTU5MjQxNCwibGFzdElkIjo4MDF9&limit=100
