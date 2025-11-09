@@ -66,7 +66,7 @@ public class UserService {
 
         String nextCursor = null;
         if (hasMore) {
-            UserProjection last = rows.get(rows.size() - 1);
+            UserProjection last = rows.get(rows.size() - 1); // getLast()
             Cursor next = new Cursor(last.getCreatedAt().toEpochMilli(), last.getId());
             try {
                 String json = mapper.writeValueAsString(next);
@@ -75,7 +75,7 @@ public class UserService {
             }
         }
 
-        return new PaginatedResponse<UserDto>(dtos, nextCursor);
+        return new PaginatedResponse<>(dtos, nextCursor);
     }
 
 

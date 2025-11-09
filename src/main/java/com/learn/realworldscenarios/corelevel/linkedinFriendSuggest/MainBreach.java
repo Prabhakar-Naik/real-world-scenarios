@@ -39,6 +39,7 @@ public class MainBreach {
 
         List<Person> suggest = iam.suggestFriends(suggestFriends);
         System.out.println(suggest);
+        suggest.stream().filter(person -> !person.getName().equals(iam.getName())).forEach(System.out::println);
 
 
         List<Integer> list =  List.of(23,56,35,67,78,26);
